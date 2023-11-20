@@ -6,10 +6,15 @@
   <meta name="viewport" content="initial-scale=1.0">
   <meta charset="utf-8">
 
+  <link rel="stylesheet"
+          href="https://fonts.googleapis.com/css2?family=Domine">
+
+
   <style>
     body {
       margin: 0;
       background-color: #F2DCC9;
+      font-family: 'Domine', serif;
     }
 
     /* map div styles */
@@ -34,58 +39,7 @@
       box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.4);
       display: none;
     }
-    .container-location {
-      display: flex;
-      width: 100%;
-      overflow: auto;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      padding: 10px;
-    }
-    .popup h3 {
-      font-size: 1.5em;
-      font-weight: 600;
-      padding: 0;
-      margin-top: 0;
-      margin-bottom: 10px;
-    }
-    .popup p {
-      padding: 4px;
-      line-height: 1em;
-      margin: 0;
-      text-align: left;
-    }
-    .popup ul {
-      list-style: none;
-      padding-left: 0px;
-    }
-    .popup li {
-      padding-bottom: 10px;
-    }
-    .location-info {
-      float: right;
-    }
-    .popup-image {
-      max-height: 15vh;
-    }
-    .map-image {
-      max-height: 100px;
-    }
-    .popup-btn {
-      margin-top: 10px;
-      background-color:#e75f32;
-      color: #ffffff;
-      border-width: 0px;
-      font-family: 'Poppins',Helvetica,Arial,Lucida,sans-serif;
-      padding: .3em 1em;
-      -webkit-border-radius: 3px;
-      -moz-border-radius: 3px;
-      border-radius: 3px;
-      font-size: 20px;
-      font-weight: 500;
-      line-height: 1.7em !important;
-    }
+
     #arrow {
       position: absolute;
       background: #fff;
@@ -99,9 +53,8 @@
     }
 
     /* map interaction styles */
-    .selected {
-      stroke-opacity: 1;
-      fill: #e75f32;
+    .hover {
+      fill-opacity: 1;
     }
     
     .place-label {

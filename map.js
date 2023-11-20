@@ -54,7 +54,7 @@ function drawMap(data) {
         'translate(' + margin.left + ',' + margin.top + ')'
         );
 
-    const zoom = d3.zoom().scaleExtent([.7, 8]).on("zoom", zoomed);
+    const zoom = d3.zoom().scaleExtent([.7, 15]).on("zoom", zoomed);
     zoom(svg); // now zoom listens for events that occur on SVG
         
     const projection = d3.geoAlbersUsa()
@@ -86,8 +86,8 @@ function drawMap(data) {
     .style("stroke", "#A67E76")
     .attr("fill", "#D9B1A3")
     .attr("fill-opacity", 1)
-    .attr("stroke-width", "2px")
-    .attr("stroke-opacity", 0.7)
+    .attr("stroke-width", "1px")
+    .attr("stroke-opacity", 0.4)
     .on("mouseover", function(e, d) {  // when mousing over an element
         // d3.select(this).classed("hover", true) // select it and add a class name
         
@@ -122,35 +122,140 @@ function drawMap(data) {
     .append("path")  // append new path elements for each data feature
     .attr("d", (d) => compositePath(d))  // give each path a d attribute value
     .attr("data-park", (d) => {return d.properties.PARK_NAME})
-    .style("stroke", "#254021")
-    .attr("fill", "#848C45")
-    .attr("fill-opacity", 1)
-    .attr("stroke-width", "1px")
-    .attr("stroke-opacity", 0.7)
+    .style("stroke", "#848C45")
+    .attr("fill", "#254021")
+    .attr("fill-opacity", .6)
+    .attr("stroke-width", ".5px")
+    .attr("stroke-opacity", .2)
     .on("mouseover", function(e, d) {  // when mousing over an element
         d3.select(this).classed("hover", true) // select it and add a class name
         this.style.cursor = 'pointer';
         
+        let popupHTML = d.properties.UNIT_NAME;
+        
+        document.getElementById('content-div').innerHTML = popupHTML;
+
+        popup.style("display", "block");
+        
+        popup.transition().duration(200).style("opacity", 1);   // make tooltip visible and update info
+        
+        // console.log(e.srcElement);
+        const virtualEl = {
+            getBoundingClientRect() {
+                return {
+                    width: 0,
+                    height: 0,
+                    x: e.clientX,
+                    y: e.clientY,
+                    top: e.clientY,
+                    left: e.clientX,
+                    right: e.clientX,
+                    bottom: e.clientY,
+                };
+            },
+        };
+        // console.log(virtualEl);
+        
+        FloatingUIDOM.computePosition(virtualEl, popupEl, {
+            placement: 'bottom',
+            middleware: [
+                FloatingUIDOM.offset(5),
+                FloatingUIDOM.flip(),
+                FloatingUIDOM.shift({padding: 8}),
+                FloatingUIDOM.arrow({element: document.getElementById("arrow")})
+            ]
+        }).then(({x, y, placement, middlewareData}) => {
+            Object.assign(popupEl.style, {
+                left: `${x}px`,
+                top: `${y}px`,
+            });
+            
+            const {x: arrowX, y: arrowY} = middlewareData.arrow;
+            
+            const staticSide = {
+                top: 'bottom',
+                right: 'left',
+                bottom: 'top',
+                left: 'right',
+            }[placement.split('-')[0]];
+            
+            Object.assign(document.getElementById("arrow").style, {
+                left: arrowX != null ? `${arrowX}px` : '',
+                top: arrowY != null ? `${arrowY}px` : '',
+                right: '',
+                bottom: '',
+                [staticSide]: '-4px',
+            });
+        });
     })
+    // .on("mousemove", function(e, d) {
+    //     // update the position of the tooltip
+
+    //     const virtualEl = {
+    //         getBoundingClientRect() {
+    //             return {
+    //                 width: 0,
+    //                 height: 0,
+    //                 x: e.clientX,
+    //                 y: e.clientY,
+    //                 top: e.clientY,
+    //                 left: e.clientX,
+    //                 right: e.clientX,
+    //                 bottom: e.clientY,
+    //             };
+    //         },
+    //     };
+    //     // console.log(virtualEl);
+        
+    //     FloatingUIDOM.computePosition(virtualEl, popupEl, {
+    //         placement: 'bottom',
+    //         middleware: [
+    //             FloatingUIDOM.offset(5),
+    //             FloatingUIDOM.flip(),
+    //             FloatingUIDOM.shift({padding: 8}),
+    //             FloatingUIDOM.arrow({element: document.getElementById("arrow")})
+    //         ]
+    //     }).then(({x, y, placement, middlewareData}) => {
+    //         Object.assign(popupEl.style, {
+    //             left: `${x}px`,
+    //             top: `${y}px`,
+    //         });
+            
+    //         const {x: arrowX, y: arrowY} = middlewareData.arrow;
+            
+    //         const staticSide = {
+    //             top: 'bottom',
+    //             right: 'left',
+    //             bottom: 'top',
+    //             left: 'right',
+    //         }[placement.split('-')[0]];
+            
+    //         Object.assign(document.getElementById("arrow").style, {
+    //             left: arrowX != null ? `${arrowX}px` : '',
+    //             top: arrowY != null ? `${arrowY}px` : '',
+    //             right: '',
+    //             bottom: '',
+    //             [staticSide]: '-4px',
+    //         });
+    //     });
+    // })
     .on("mouseout", function(e, d) { // when mousing out of an element
-        // d3.select(this).classed("hover", false) // remove the class
-        
+        d3.select(this).classed("hover", false) // remove the class
+        popup.transition().duration(200).style("opacity", 0);
+        popup.style("display", "none");
     })
-    .on("click", function (e, d) { // on click, fill popup information and show
+    // .on("click", function (e, d) { // on click, fill popup information and show
         
-        e.stopPropagation();
+    //     e.stopPropagation();
         
     
-    })
+    // })
     
 
     d3.select('body').on('click', () => {
         popup.style("display", "none");
         popup.transition().duration(200).style("opacity", 0);
         
-        if (selected != null) {
-            selected.classed("selected", false) // removed class from last selected
-        }
     })
     
     
