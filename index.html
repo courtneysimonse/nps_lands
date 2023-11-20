@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Demo</title>
+  <meta name="viewport" content="initial-scale=1.0">
+  <meta charset="utf-8">
+
+  <style>
+    /* map div styles */
+    #map {
+      width: 100%;
+      aspect-ratio: 975 / 610;
+      overflow: hidden;
+    }
+
+    /* map popup styles */
+    .popup {
+      position: absolute;
+      opacity: 0;
+      min-width: 20px;
+      max-width: 350px;
+      padding: 6px 11px;
+      border-radius: 4px;
+      background: #fff;
+      color: #333;
+      font-size: 1.1em;
+      box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.4);
+      display: none;
+    }
+    .container-location {
+      display: flex;
+      width: 100%;
+      overflow: auto;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 10px;
+    }
+    .popup h3 {
+      font-size: 1.5em;
+      font-weight: 600;
+      padding: 0;
+      margin-top: 0;
+      margin-bottom: 10px;
+    }
+    .popup p {
+      padding: 4px;
+      line-height: 1em;
+      margin: 0;
+      text-align: left;
+    }
+    .popup ul {
+      list-style: none;
+      padding-left: 0px;
+    }
+    .popup li {
+      padding-bottom: 10px;
+    }
+    .location-info {
+      float: right;
+    }
+    .popup-image {
+      max-height: 15vh;
+    }
+    .map-image {
+      max-height: 100px;
+    }
+    .popup-btn {
+      margin-top: 10px;
+      background-color:#e75f32;
+      color: #ffffff;
+      border-width: 0px;
+      font-family: 'Poppins',Helvetica,Arial,Lucida,sans-serif;
+      padding: .3em 1em;
+      -webkit-border-radius: 3px;
+      -moz-border-radius: 3px;
+      border-radius: 3px;
+      font-size: 20px;
+      font-weight: 500;
+      line-height: 1.7em !important;
+    }
+    #arrow {
+      position: absolute;
+      background: #fff;
+      width: 8px;
+      height: 8px;
+      transform: rotate(45deg);
+    }
+    #content-div {
+      max-height: 100%;
+      overflow-y: auto;
+    }
+
+    /* map interaction styles */
+    .selected {
+      stroke-opacity: 1;
+      fill: #e75f32;
+    }
+    
+    .place-label {
+      font-size: 10px;
+      font-weight: bold;
+      fill: #333;
+      pointer-events: none;
+    }
+
+
+  </style>
+</head>
+
+<body>
+
+    <!-- map added to a div with id "map" -->
+    <div id="map"></div>
+
+    <!-- empty popup -->
+    <div class="popup" role="tooltip" id="popup">
+      <div id="content-div"></div>
+      <div id="arrow"></div>
+    </div>
+
+
+  <!-- External libraries for map -->
+  <script src="https://d3js.org/d3.v7.min.js"></script>
+  <script src="https://unpkg.com/topojson@3.0.2/dist/topojson.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@floating-ui/core@1.0.1"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@floating-ui/dom@1.0.4"></script>
+
+  <!-- Map script -->
+  <script src="map.js"></script>
+</body>
+
+</html>

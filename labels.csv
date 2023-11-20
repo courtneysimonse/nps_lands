@@ -1,0 +1,57 @@
+fips,name,usps,lon,lat
+01,Alabama,AL,-86.82,32.78
+02,Alaska,AK,-152.22,64.2
+04,Arizona,AZ,-111.66,34.29
+08,Colorado,CO,-105.55,39
+12,Florida,FL,-81.33,27.81
+13,Georgia,GA,-83.45,32.65
+18,Indiana,IN,-86.27,39.91
+20,Kansas,KS,-98.38,38.48
+23,Maine,ME,-69.22,45.36
+25,Massachusetts,MA,-71.8,42.13
+27,Minnesota,MN,-94.31,46.31
+34,New Jersey,NJ,-72.36,39.82
+37,North Carolina,NC,-79.35,35.54
+38,North Dakota,ND,-100.47,47.44
+40,Oklahoma,OK,-97.51,35.58
+42,Pennsylvania,PA,-77.8,40.87
+46,South Dakota,SD,-100.23,44.44
+48,Texas,TX,-99.35,31.48
+56,Wyoming,WY,-107.55,43
+09,Connecticut,CT,-71.5,40.5
+29,Missouri,MO,-92.47,38.36
+54,West Virginia,WV,-80.61,38.64
+17,Illinois,IL,-89.2,40.06
+35,New Mexico,NM,-106.11,34.42
+05,Arkansas,AR,-92.43,34.89
+06,California,CA,-119.84,36.72
+10,Delaware,DE,-69.6,38
+11,District of Columbia,DC,-74.81,36.67
+15,Hawaii,HI,-156.35,20.25
+19,Iowa,IA,-93.49,42.07
+21,Kentucky,KY,-85.29,37.52
+24,Maryland,MD,-73.21,37.9
+26,Michigan,MI,-84.8,43.09
+28,Mississippi,MS,-89.66,32.75
+30,Montana,MT,-109.64,47.03
+33,New Hampshire,NH,-67.38,42.96
+36,New York,NY,-75.5,42.93
+39,Ohio,OH,-82.79,40.29
+41,Oregon,OR,-120.55,43.93
+47,Tennessee,TN,-86.34,35.84
+49,Utah,UT,-111.67,39.32
+51,Virginia,VA,-78.8,37.51
+53,Washington,WA,-120.45,47.38
+55,Wisconsin,WI,-90.01,44.63
+60,American Samoa,AS,-170.4,-14.27
+66,Guam,GU,144.77,13.44
+69,Commonwealth of the Northern Mariana Islands,MP,145.62,15.67
+31,Nebraska,NE,-99.81,41.52
+45,South Carolina,SC,-80.89,33.9
+72,Puerto Rico,PR,-66.45,18.22
+78,United States Virgin Islands,VI,-64.81,18.01
+16,Idaho,ID,-114.65,44.38
+32,Nevada,NV,-116.65,39.35
+50,Vermont,VT,-72.73,45.89
+22,Louisiana,LA,-92.48,30.64
+44,Rhode Island,RI,-68.4,40.68
